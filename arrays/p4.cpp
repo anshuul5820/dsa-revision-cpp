@@ -1,6 +1,8 @@
 #include <iostream>
 using namespace std;
 int rotateArray1(int *, int, int);
+int rotateArray2(int *, int, int);
+int printArray(int *, int);
 int main()
 {
     int n, d;
@@ -13,6 +15,16 @@ int main()
     cout << "enter d: ";
     cin >> d;
     rotateArray1(arr, n, d);
+    printArray(arr, n);
+    rotateArray2(arr, n, d);
+    return 0;
+}
+
+int printArray(int *arr, int n)
+{
+    for (int i = 0; i < n; i++)
+        cout << *(arr + i) << " ";
+    cout << endl;
     return 0;
 }
 
@@ -34,4 +46,20 @@ int rotateArray1(int *arr, int n, int d)
     }
     for (int i = 0; i < n; i++)
         arr[i] = temp[i];
+    return 0;
+}
+
+int rotateArray2(int *arr, int n, int d)
+{
+    int p = 1;
+    while (p <= d)
+    {
+        int last = arr[0];
+        for (int i = 0; i < n - 1; i++)
+        {
+            arr[i] = arr[i + 1];
+        }
+        arr[n - 1] = last;
+        p++;
+    }
 }
